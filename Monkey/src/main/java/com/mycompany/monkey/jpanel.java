@@ -1,5 +1,9 @@
 package com.mycompany.monkey;
 
+import static com.mycompany.monkey.menu.tiempoEmpaq;
+import static com.mycompany.monkey.menu.tiempoInv;
+import static com.mycompany.monkey.menu.tiempoProd;
+import static com.mycompany.monkey.menu.tiempoSal;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -8,8 +12,9 @@ import javax.swing.JPanel;
 
 public class jpanel extends JPanel implements Runnable{
     int segundos =0;
+    int aux = 0;
 int minutos = 0;
-String contador = "0:00";
+public static String contador = "0:00";
 String Linicio = "Inicio: ";
 String Linv = "Inventario: ";
 String Lprod = "Producción: ";
@@ -59,7 +64,7 @@ public void paint(Graphics g){
     //circulo
     g.setColor(Color.black);
     
-    g.drawString(contador, 150, 50); 
+    g.drawString(contador, 155, 50); 
     g.drawString(Linicio, 60, 170); 
     g.drawString(Linv, 210, 170); 
     g.drawString(Lprod, 210, 320); 
@@ -72,26 +77,97 @@ public void paint(Graphics g){
 
     @Override
 public void run() {
-        while (true){
-            if (segundos == 60){
-                minutos++;
-                        segundos = 0;
-            }
-            if (segundos <10){
-                System.out.println(minutos + ":0" + segundos);
-                contador = minutos + ":0" + segundos;
-            }else {
-                System.out.println(minutos+":"+segundos);
-                contador = minutos + ":" + segundos;
-            }
-            repaint();
-            try{
-                Thread.sleep(1000);
-                segundos++;
-            }catch(InterruptedException ex){
-                System.out.println("error");
-            }
+    byte contInicio=30;
+    byte contInv=0;
+    byte contProd=0;
+    byte contEmpaq=0;
+    byte contSal=0;
+    byte contFinal=0;
+    while (true){
+        
+    //contador
+    if (segundos == 60){
+        minutos++;
+        segundos = 0;
+    }
+    if (segundos <10){
+        System.out.println(minutos + ":0" + segundos);
+        contador = minutos + ":0" + segundos;
+    }else {
+        System.out.println(minutos+":"+segundos);
+        contador = minutos + ":" + segundos;
+    }
+    
+    //contador inicio
+    if(contInicio!=0){
+    contInicio--;
+    Linicio= "Inicio: " + contInicio;
+    }
+    
+    //contador inventario
+    if(contInv!=tiempoInv && contInicio!=0){
+    contInv++; 
+    Linv= "Inventario: " + contInv;
+    }
+    if(contInicio==0){
+        if(contInv!=0){
+        contInv--;
+    Linv= "Inventario: " + contInv;
+    }
         }
+    
+    //contador produccion
+    if(contInv==tiempoInv && contProd!=tiempoProd && contInv!=0){
+        contProd++;
+    Lprod= "Producción: " + contProd;
+    }
+    if (contInv==0){
+    if(contProd!=0){
+    contProd--;
+    Lprod= "Producción: " + contProd;
+    }
+    }
+    
+    //contador Empaquetado
+    if(contProd==tiempoProd && contEmpaq!=tiempoEmpaq && contProd!=0){
+    contEmpaq++;
+    Lempaq= "Empaquetado: " + contEmpaq;
+    
+    }
+    if (contProd==0 && contEmpaq!=0){
+    contEmpaq--;
+    Lempaq= "Empaquetado: " + contEmpaq;
+    }
+    
+    //contador salida
+    if(contEmpaq==tiempoEmpaq && contSal!=tiempoSal && contEmpaq!=0){
+    contSal++;
+    Lsal= "Salida: " + contSal;
+    }
+    if (contEmpaq==0 && contSal!=0){
+    contSal--;
+    contFinal++;
+    Lsal= "Salida: " + contSal;
+    Lfinal= "Final: " + contFinal;
+    }
+    
+    //contador final
+    if(contSal==tiempoSal){
+    if(contFinal!=30){
+    contFinal++;
+    Lfinal= "Final: " + contFinal;
+    }
+    }
+    
+    repaint();
+    aux++;
+    try{
+    Thread.sleep(1000);
+    segundos++;
+    }catch(InterruptedException ex){
+    System.out.println("error");
+    }
+    }
     
 }
 }

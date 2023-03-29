@@ -95,28 +95,46 @@ public class menu extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField1.setText("1");
 
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField2.setText("1");
 
         jTextField3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField3.setText("1");
 
         jTextField4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField4.setText("1");
 
         jTextField5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField5.setText("1");
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         jTextField6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField6.setText("1");
         jTextField6.setToolTipText("");
 
         jTextField7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField7.setText("1");
 
         jTextField8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField8.setText("1");
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
@@ -343,6 +361,14 @@ public class menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Faltan areas por rellenar!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
 
     /**
      * @param args the command line arguments
