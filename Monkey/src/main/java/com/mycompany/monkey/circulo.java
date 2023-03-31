@@ -1,5 +1,6 @@
 package com.mycompany.monkey;
 
+import static com.mycompany.monkey.jpanel.contE;
 import static com.mycompany.monkey.jpanel.contFinal;
 import static com.mycompany.monkey.jpanel.contIn;
 import static com.mycompany.monkey.jpanel.contIv;
@@ -8,7 +9,6 @@ import static com.mycompany.monkey.jpanel.contS;
 import static com.mycompany.monkey.menu.tiempoEmpaq;
 import static com.mycompany.monkey.menu.tiempoInv;
 import static com.mycompany.monkey.menu.tiempoProd;
-import static com.mycompany.monkey.menu.tiempoSal;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -29,13 +29,16 @@ public class circulo extends JPanel implements Runnable{
     private int dx = 2;
     private int dy = 2;
     private int a = 50;
-    private int b = 50;   
-    private int c = 50;  
+    private int b = 0;
+    private int c = 0;
     private int d = 50;  
     private int e = 50; 
     private int f = 50; 
     private int h = 50; 
     private int l = 50;
+    private int m = 0;
+    private int n = 0;
+    private int ñ = 0;
     public circulo(){
         Thread hilo = new Thread(this);
         hilo.start();
@@ -82,32 +85,28 @@ public void paint(Graphics g){
     g.drawOval(x2, y2, d, d);
     g.drawOval(x3, y3, f, f);
     g.drawOval(x4, y4, l, l);
-    /*g.drawOval(25, 25, a, a);
-    g.drawOval(170, 25, b, b);*/
+    g.drawOval(25, 25, a, a);
+    g.drawOval(171, 25, b, b);
+    g.drawOval(170, 171, c, c);
+    g.drawOval(170, 321, m, m);
+    g.drawOval(170, 475, n, n);
+    g.drawOval(25, 475, ñ, ñ);
 }
     @Override
     public void run() {
-        int tiempo = 3;
-               for (int i = 0; i < 30; i++) {
-                   /*if (i==29){
-                   a=0;
-                   b=0;
-                   }
-                   if (contIv == 0){
-                   c=0;
-                   d=0;
-                   }
-                   repaint();*/
+               while(true){ 
+        
         //Inicio a Inv
             x=25;
         while (x!=171){
             x += dx;
-            if(contIv==0){
+            if(contIn==0){
                 e=0;
             }
+            
             repaint();
             try{
-                Thread.sleep(tiempo);
+                Thread.sleep(6);
             }catch(InterruptedException ex){
                 System.out.println("error");
             }
@@ -115,11 +114,24 @@ public void paint(Graphics g){
         //Inv a Prod
         if(contIv==tiempoInv){
             y1=25;
+            
         while (y1!=171){
             y1 += dy;
             repaint();
             try{
-                Thread.sleep(tiempo);
+                Thread.sleep(3);
+            }catch(InterruptedException ex){
+                System.out.println("error");
+            }
+        }
+        }
+        if(contIv==tiempoInv-1){
+            y1=25;
+        while (y1!=171){
+            y1 += dy;
+            repaint();
+            try{
+                Thread.sleep(3);
             }catch(InterruptedException ex){
                 System.out.println("error");
             }
@@ -132,7 +144,7 @@ public void paint(Graphics g){
             y1 += dy;
             repaint();
             try{
-                Thread.sleep(tiempo);
+                Thread.sleep(3);
             }catch(InterruptedException ex){
                 System.out.println("error");
             }
@@ -149,20 +161,32 @@ public void paint(Graphics g){
             y2 += dy;
             repaint();
             try{
-                Thread.sleep(tiempo);
+                Thread.sleep(3);
             }catch(InterruptedException ex){
                 System.out.println("error");
             }
         }
         }
-        if(contIn==0){
+        if(contP==tiempoProd-1){
+            y2=171;
+        while (y2!=321){
+            y2 += dy;
+            repaint();
+            try{
+                Thread.sleep(3);
+            }catch(InterruptedException ex){
+                System.out.println("error");
+            }
+        }
+        }
+        if(contIv==0){
         if(contP!=0){
             y2=171;
             while (y2!=321){
             y2 += dy;
             repaint();
             try{
-                Thread.sleep(tiempo);
+                Thread.sleep(3);
             }catch(InterruptedException ex){
                 System.out.println("error");
             }
@@ -173,26 +197,38 @@ public void paint(Graphics g){
             }
         
         //Empaq a Sal
-        if(contS==tiempoSal){
+        if(contE==tiempoEmpaq){
             y3=321;
         while (y3!=475){
             y3 += dy;
             repaint();
             try{
-                Thread.sleep(tiempo);
+                Thread.sleep(3);
             }catch(InterruptedException ex){
                 System.out.println("error");
             }
         }
         }
-        if(contIn==0){
-        if(contS!=0){
+            if(contE==tiempoEmpaq-1){
+        y3=321;
+        while (y3!=475){
+        y3 += dy;
+        repaint();
+        try{
+        Thread.sleep(3);
+        }catch(InterruptedException ex){
+        System.out.println("error");
+        }
+        }
+        }
+        if(contIv==0){
+        if(contE!=0){
             y3=321;
             while (y3!=475){
             y3 += dy;
             repaint();
             try{
-                Thread.sleep(tiempo);
+                Thread.sleep(3);
             }catch(InterruptedException ex){
                 System.out.println("error");
             }
@@ -202,8 +238,9 @@ public void paint(Graphics g){
         }
             }
         // Sal a Final
-        if(contFinal!=0){
-          x4=171;
+        if(contFinal==0){
+            if(contFinal==1){
+              x4=171;
         while (x4!=25){
             x4 -= dx;
             if(contFinal==30){
@@ -211,16 +248,57 @@ public void paint(Graphics g){
             }
             repaint();
             try{
-                Thread.sleep(tiempo);
+                Thread.sleep(5);
             }catch(InterruptedException ex){
                 System.out.println("error");
             }
         }  
+            }
+        }else{
+            x4=171;
+        while (x4!=25){
+            x4 -= dx;
+            if(contFinal==30){
+                l=0;
+            }
+            repaint();
+            try{
+                Thread.sleep(5);
+            }catch(InterruptedException ex){
+                System.out.println("error");
+            }
         }
-        
-        
-        
         }
+        if(contIn==0){
+            a=0;
+            }
+        if(contIv==0){
+            b=0;
+            }else{
+            b=50;
+        }
+        if(contP==0){
+            c=0;
+            }else{
+            c=50;
+        }
+        if(contE==0){
+            m=0;
+            }else{
+            m=50;
+        }
+        if(contS==0){
+            n=0;
+            }else{
+            n=50;
+        }
+        if(contFinal>0){
+            ñ=50;
+            }else{
+            ñ=0;
+        }
+        }
+               
         }
         }
     

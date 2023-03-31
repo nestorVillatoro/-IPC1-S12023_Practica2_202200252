@@ -151,7 +151,7 @@ public class sim extends javax.swing.JFrame {
                            "</body>\n" +
                            "</html>";
         try {
-            FileWriter archivo = new FileWriter("guia.html"); 
+            FileWriter archivo = new FileWriter("Reporte.html"); 
             archivo.write(contenido);
             archivo.close();
             System.out.println("El archivo HTML ha sido generado exitosamente.");

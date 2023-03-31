@@ -93,23 +93,18 @@ public class menu extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField1.setText("1");
 
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField2.setText("1");
 
         jTextField3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField3.setText("1");
 
         jTextField4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField4.setText("1");
 
         jTextField5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField5.setText("1");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -118,16 +113,13 @@ public class menu extends javax.swing.JFrame {
 
         jTextField6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField6.setText("1");
         jTextField6.setToolTipText("");
 
         jTextField7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField7.setText("1");
 
         jTextField8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField8.setText("1");
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
@@ -318,8 +310,13 @@ public class menu extends javax.swing.JFrame {
             ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             jpanel objeto = new jpanel();;
             ventana.add(objeto);*/
+            if(tiempoInv<=15 && tiempoProd<=15&& tiempoEmpaq<=15 && tiempoSal<=15){
             sim newframe = new sim();
             newframe.setVisible(true);
+            this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Los tiempos no deben ser mayores a 15 segundos!");
+            }
             /*JLabel Linicio = new JLabel();
             Linicio.setText("Inicio: ");
             Linicio.setSize(100, 20);

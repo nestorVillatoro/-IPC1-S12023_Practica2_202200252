@@ -67,7 +67,7 @@ public void paint(Graphics g){
     g.setColor(Color.black);
     g.drawRoundRect(50, 600, 100, 100, 20, 20);*/
     g.setColor(Color.black);
-    g.drawString(contador, 155, 50); 
+    g.drawString(contador, 200, 50); 
     g.drawString(Linicio, 60, 140); 
     g.drawString(Linv, 310, 200); 
     g.drawString(Lprod, 310, 350); 
