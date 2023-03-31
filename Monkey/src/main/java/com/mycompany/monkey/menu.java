@@ -1,7 +1,5 @@
 package com.mycompany.monkey;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class menu extends javax.swing.JFrame {
@@ -313,16 +311,15 @@ public class menu extends javax.swing.JFrame {
             System.out.println("Salida | Tiempo: " + tiempoSal + "s | Costo: " + costoSal + "Q/s");
             System.out.println("________________________________________________________________________________________");  
             //___________________________________________________________________________________________________________________________________________
-            JFrame ventana = new JFrame("Simulación");
-            ventana.setSize(350, 850);
+            /*JFrame ventana = new JFrame("Simulación");
+            ventana.setSize(350, 750);
             ventana.setLocationRelativeTo(null);
             ventana.setResizable(false);
             ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            jpanel objeto = new jpanel();
-            circulo circ = new circulo();
-            ventana.add(circ);
-            ventana.add(objeto);
-            ventana.setVisible(true);
+            jpanel objeto = new jpanel();;
+            ventana.add(objeto);*/
+            sim newframe = new sim();
+            newframe.setVisible(true);
             /*JLabel Linicio = new JLabel();
             Linicio.setText("Inicio: ");
             Linicio.setSize(100, 20);
@@ -353,7 +350,6 @@ public class menu extends javax.swing.JFrame {
             LFinal.setSize(100, 20);
             LFinal.setLocation(60, 610);
             ventana.add(LFinal);*/
-            
         }else{
                 JOptionPane.showMessageDialog(rootPane, "Los valores deben ser enteros positivos!");
             }

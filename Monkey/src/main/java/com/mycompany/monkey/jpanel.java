@@ -11,8 +11,13 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 public class jpanel extends JPanel implements Runnable{
-    int segundos =0;
-    int aux = 0;
+public static byte contFinal=0;
+public static byte contIn=1;
+public static byte contIv=1;
+public static byte contP=1;
+public static byte contE=1;
+public static byte contS=1;
+int segundos =0;
 int minutos = 0;
 public static String contador = "0:00";
 String Linicio = "Inicio: ";
@@ -29,9 +34,9 @@ public jpanel(){
 public void paint(Graphics g){
     super.paint(g);
     Graphics2D g2d = (Graphics2D)g;
-    BasicStroke grosor = new BasicStroke(4);
+    BasicStroke grosor = new BasicStroke(3);
     g2d.setStroke(grosor);
-    //inicio
+    /*//inicio
     g.setColor(new Color(135, 135, 135));
     g.fillRoundRect(50, 150, 100, 100, 20, 20);
     g.setColor(Color.black);
@@ -60,41 +65,35 @@ public void paint(Graphics g){
     g.setColor(new Color(214, 166, 77));
     g.fillRoundRect(50, 600, 100, 100, 20, 20);
     g.setColor(Color.black);
-    g.drawRoundRect(50, 600, 100, 100, 20, 20);
-    //circulo
+    g.drawRoundRect(50, 600, 100, 100, 20, 20);*/
     g.setColor(Color.black);
-    
     g.drawString(contador, 155, 50); 
-    g.drawString(Linicio, 60, 170); 
-    g.drawString(Linv, 210, 170); 
-    g.drawString(Lprod, 210, 320); 
-    g.drawString(Lempaq, 210, 470); 
-    g.drawString(Lsal, 210, 620); 
-    g.drawString(Lfinal, 60, 620); 
-    
-    
+    g.drawString(Linicio, 60, 140); 
+    g.drawString(Linv, 310, 200); 
+    g.drawString(Lprod, 310, 350); 
+    g.drawString(Lempaq, 310, 500); 
+    g.drawString(Lsal, 310, 650); 
+    g.drawString(Lfinal, 60, 720); 
 }
 
     @Override
 public void run() {
+    byte contF=0;
     byte contInicio=30;
     byte contInv=0;
     byte contProd=0;
     byte contEmpaq=0;
     byte contSal=0;
-    byte contFinal=0;
-    while (true){
-        
+    while (contF!=30){
+       
     //contador
     if (segundos == 60){
         minutos++;
         segundos = 0;
     }
     if (segundos <10){
-        System.out.println(minutos + ":0" + segundos);
         contador = minutos + ":0" + segundos;
     }else {
-        System.out.println(minutos+":"+segundos);
         contador = minutos + ":" + segundos;
     }
     
@@ -146,28 +145,34 @@ public void run() {
     }
     if (contEmpaq==0 && contSal!=0){
     contSal--;
-    contFinal++;
+    contF++;
     Lsal= "Salida: " + contSal;
-    Lfinal= "Final: " + contFinal;
+    Lfinal= "Final: " + contF;
     }
     
     //contador final
     if(contSal==tiempoSal){
-    if(contFinal!=30){
-    contFinal++;
-    Lfinal= "Final: " + contFinal;
+    if(contF!=30){
+    contF++;
+    Lfinal= "Final: " + contF;
     }
     }
     
     repaint();
-    aux++;
     try{
     Thread.sleep(1000);
     segundos++;
     }catch(InterruptedException ex){
     System.out.println("error");
     }
+    contFinal = contF;
+    contIn= contInicio;
+    contIv= contInv;
+    contP= contProd;
+    contE= contEmpaq;
+    contS= contSal;
     }
     
 }
+
 }
