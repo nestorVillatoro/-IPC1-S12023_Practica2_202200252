@@ -8,6 +8,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class jpanel extends JPanel implements Runnable{
@@ -85,7 +86,6 @@ public void run() {
     byte contEmpaq=0;
     byte contSal=0;
     while (contF!=30){
-       
     //contador
     if (segundos == 60){
         minutos++;
@@ -172,7 +172,7 @@ public void run() {
     contE= contEmpaq;
     contS= contSal;
     }
-    
+    JOptionPane.showMessageDialog(null, "La simulación a finalizado!");
 }
 
 }
